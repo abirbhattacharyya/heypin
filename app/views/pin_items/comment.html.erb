@@ -1,0 +1,23 @@
+<div class="static-aligner">
+    <!-- static page content (begin) -->
+
+    <div class="capsule image-tell">
+
+        <div class="visual">
+            <%= image_tag(url_for_file_column(@pin_item,:image_url)) %>
+        </div>
+        <div class="info">
+            <h2>Tell us your comments on this picture?</h2>
+            <% form_tag comment_pin_item_path(@pin_item.id) do %>
+            <p>
+                <br>
+                <%= text_field_tag :comment, "", :size => 70 %>
+            </p>
+            <p><%= submit_tag("Go!") %></p>
+            <% end %>
+        </div>
+
+    </div><!-- .capsule.зшт -->
+
+    <!-- static page content (end) -->
+</div><!-- .static-aligner -->

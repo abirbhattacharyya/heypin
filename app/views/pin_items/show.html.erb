@@ -1,0 +1,19 @@
+<div class="static-aligner">
+
+    <!-- static page content (begin) -->
+
+    <div class="capsule item">
+
+        <%= image_tag(url_for_file_column(@pin_item,:image_url), :class => "thumb") %>
+
+        <p>
+          <%=@pin_item.description%>
+        </p>
+        <p>
+    	  <%= link_to "close", "/" %>
+        </p>
+
+    </div><!-- .capsule.зшт -->
+    <!-- static page content (end) -->
+
+</div><!-- .static-aligner -->

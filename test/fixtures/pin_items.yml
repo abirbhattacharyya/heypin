@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  image_url: MyString
+  description: MyText
+  user_id: 1
+  pin_type: 1
+
+two:
+  image_url: MyString
+  description: MyText
+  user_id: 1
+  pin_type: 1

@@ -1,0 +1,30 @@
+<div class="static-aligner">
+    <!-- static page content (begin) -->
+
+        <div class="capsule user-info">
+
+          <% @users.each_slice(3).to_a.each do |users| %>
+            <ul class="users">
+                <% users.each do |user| %>
+                <li class="user">
+                    <h2><%= user.display_name %></h2>
+                    <div class="thumb">
+                        <%= link_to(image_tag(user.image_url), user_images_path(user.id)) %>
+                    </div>
+                    <div class="points">
+                        <%= pluralize(user.points, "Point") %>
+                    </div>
+                    <div class="stats">
+                        stole: <b><%= pluralize(user.liked_pin_points, "picture") %></b><br>
+                        inverted: <b><%= pluralize(user.inverted_pin_points, "picture") %></b><br>
+                        created: <b><%= pluralize(user.created_pin_points, "pin") %></b>
+                    </div>
+                </li><!-- .user -->
+                <% end %>
+            </ul><!-- .users -->
+          <% end %>
+
+        </div><!-- .capsule.зшт -->
+
+    <!-- static page content (end) -->
+</div><!-- .static-aligner -->

@@ -1,0 +1,2 @@
+module PinItemsHelper
+end

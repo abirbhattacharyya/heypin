@@ -1,0 +1,52 @@
+<div class="static-aligner">
+
+    <!-- static page content (begin) -->
+
+    <div id="addpin">
+      <div class="capsule addpin ta-center">
+        <% form_remote_tag :url => get_images_path, :before => "beforeSubmitForm();", :html => {:id => "get_images_form"} do%>
+          <h1 class="ta-center">So which website do you want to find images from?</h1>
+
+          <p>
+              <label>Which website?</label><br>
+              <%=text_field_tag "pin_url",nil,:size => "60"%>
+          </p>
+          <p>
+            <%=button_to_function "Go", "check_url();", :id => "find_imgs_submit"%>
+          </p>
+        <% end %>
+      </div><!-- .capsule.зшт -->
+    </div>
+    <div id="image-choose">
+        <div class="capsule image-choose ta-center">
+            <h1 class="ta-center">Images From <span id="site_name" /></h1>
+            <span id="spinner_span">
+              <%= image_tag "ajax-loader.gif" %>
+            </span>
+            <div id="image_lists">
+            </div>
+        </div><!-- .capsule.зшт -->
+    </div>
+    <!-- static page content (end) -->
+</div><!-- .static-aligner -->
+<script type="text/javascript">
+  jQuery('#image-choose').hide();
+  function check_url(){
+    url = $('pin_url').value;
+    if(url.replace(/\s/g,"") == "")
+      showNotification("Hey, please enter url.", 'error');
+    else
+      jQuery('#get_images_form').submit();
+  }
+  function beforeSubmitForm(){
+    url = $('pin_url').value;
+    if(url.indexOf(".") == -1)
+      url += ".com"
+    jQuery('#spinner_span').show();
+    jQuery('#addpin').hide();
+    jQuery('#site_name').html(url);
+    jQuery('#image-choose').show();
+    jQuery('#find_imgs_submit').attr('disabled','disabled');
+    jQuery('#image_lists').html('');
+  }
+</script>

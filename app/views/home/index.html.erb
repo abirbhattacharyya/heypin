@@ -1,0 +1,49 @@
+<!-- columns container -->
+<div class="columns clearfix"></div>
+    
+<ul class="stack" style="display: none;">
+  <%unless @pin_images.empty?%>
+    <%@pin_images.each do |pin_image|%>
+        <li class="item">
+            <p class="ctrls">
+
+              <% if current_user %>                    
+                  <span id ="pin_like_<%=pin_image.id%>">
+                    <% if @like_pin_images.include?(pin_image.id) %>
+                      <%#=link_to_remote "Unlike",:url => set_unlike_pin_item_path(pin_image.id),:html => {:class => "like"}%>
+                    <%else%>
+                      <%=link_to_remote "Like & Love",:url => set_like_pin_item_path(pin_image.id),:html => {:class => "like"}%>
+                    <%end%>
+                  </span>
+                <%else%>
+                  <%=link_to "Like & Love","javascript:;",:onclick => "showNotification('Please login.','error');",:class => "like"%>
+                <%end%>
+                <%= link_to "Play", effects_pin_item_path(pin_image.id), :class => "repin"%>
+                <%= link_to "Comment", comment_pin_item_path(pin_image.id), :class => "comment"%>
+            </p>
+            <%image_path = File.join(root_url,url_for_file_column(pin_image,:image_url,{:subdir => "normal",:absolute => true}))%>
+            <%= link_to((image_tag image_path ,:id => "img_src_#{pin_image.id}"),pin_item_path(pin_image.id),:class => "thumb") %>
+            <h3><%=pin_image.description%></h3>
+            <p class="descr">
+                <%=pin_image.description%>
+            </p>
+            
+            <ul class="comments">
+              <% comments = pin_image.comments %>
+              <%unless comments.empty?%>
+                <%comments.each do |comment|%>
+                <%user= comment.user%>
+                <li>
+                    <%= link_to(image_tag(user.image_url), user_images_path(user.id)) %>
+                    <p>
+                      <%=link_to(user.display_name, user_images_path(user.id)) %>
+                      <%=comment.comment%>                    
+                    </p>
+                </li>
+                <%end%>
+             <%end%>
+            </ul><!-- .comments -->
+        </li>
+    <%end%>
+  <%end%>
+</ul>

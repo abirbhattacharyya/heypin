@@ -1,0 +1,21 @@
+<% form_tag addpin_path, :id => "submit_form" do %>
+  <%= hidden_field_tag :add_or_upload, "add" %>
+<% end %>
+<div class="static-aligner">
+    <div class="capsule addpin">
+            <h1 class="ta-center">Thanks for logging in, now start creating your own pins!</h1>
+
+            <div class="add-web">
+
+                <h2><img src="/images/ico-add.png" alt=""> Add pin from a website</h2>
+                <p><%= button_to_function("Go!", "var f = document.forms['submit_form'];$('add_or_upload').value='add';f.submit();return false;") %></p>
+
+            </div><!-- .add-web -->
+            <div class="upl-web">
+
+                <h2><img src="/images/ico-upload.png" alt=""> Upload your photos</h2>
+                <p><%= button_to_function("Go!", "var f = document.forms['submit_form'];$('add_or_upload').value='upload';f.submit();return false;") %></p>
+
+            </div><!-- .upl-web -->
+    </div><!-- .capsule.зшт -->
+</div><!-- .static-aligner -->

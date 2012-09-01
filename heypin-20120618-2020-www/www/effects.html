@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Effects</title>
+    <!-- base href="http://website.zone/shared/" -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="web/s/reset.css">
+    <link rel="stylesheet" type="text/css" href="web/s/global.css">
+
+    <!-- jQuery -->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" type="text/css" rel="stylesheet">
+    <script src="web/s/jquery-1.7.2.min.js"></script>
+    <script src="web/s/jquery-ui.min.js" type='text/javascript'></script>
+    <script src="web/s/jquery.smooth-scroll.min.js"></script>
+
+    <!-- Other -->
+    <script src="web/s/global.js"></script>
+
+<script>
+
+$(function() {
+    $(".manage .add").click(function(){
+        $('#add-dialog').dialog({
+            title: "Find images",
+            modal: true,
+            width: 510,
+            resizable: false,
+            draggable: false
+        });
+    });
+    $(".manage .upl").click(function(){
+        $('#upload-dialog').dialog({
+            title: "Upload images",
+            modal: true,
+            width: 380,
+            resizable: false,
+            draggable: false
+        });
+    });
+});
+
+</script>
+
+</head>
+<body>
+
+<div id="add-dialog" class="dialog hidden">
+    <form action="" method="post">
+        <p>
+            <b>Input URL to find images:</b>
+        </p>
+        <p>
+            <input type="text" name="" size="55">
+            <input type="submit" name="" value="Go">
+        </p>
+
+        <div class="divider"></div>
+
+        <p align="center">
+            <a href="#"><img src="web/i/examples/gilt-01.jpg" width="200" alt=""></a>
+        </p>
+        <p align="center">
+            <a href="#">&laquo; prev</a> | <a href="#">next &raquo;</a>
+        </p>
+
+        <div class="divider"></div>
+
+        <p><b>Description:</b></p>
+        <p><textarea></textarea></p>
+        <p><b>Tags:</b> (maximum 3 tags)</p>
+        <p><input type="text" size="65"></p>
+        <p align="center">
+            <input type="submit" name="" value="Add pin">
+        </p>
+    </form>
+</div>
+
+<div id="upload-dialog" class="dialog hidden">
+    <form action="" method="post">
+        <p>
+            <b>Input URL to find images:</b>
+        </p>
+        <p>
+            <input type="text" name="" size="35">
+            <input type="submit" name="" value="Go!">
+        </p>
+    </form>
+</div>
+
+<a class="scroller" href="javascript:void(0)">Scroll<br>to&nbsp;Top</a>
+
+<div id="header">
+
+    <ul class="menu">
+        <li><a class="home" href="#">Home</a></li>
+        <li><a class="current" href="#">Create</a></li>
+        <li><a href="#">Play</a></li>
+        <li><a href="#">Winners</a></li>
+        <li><a class="login" href="#">Login</a></li>
+    </ul>
+
+    <a class="logo" href="#">LOGO</a>
+
+    <div class="search">
+        <input type="text">
+        <input type="submit" value="&nbsp;">
+    </div>
+
+</div><!-- #header -->
+
+<div id="content">
+    <div class="static-aligner">
+
+        <!-- static page content (begin) -->
+
+        <div class="capsule effects">
+
+            <div class="visual">
+                <div class="original">
+                    <label>Original:</label>
+                    <img src="web/i/examples/gilt-04.jpg" alt="">
+                </div>
+                <div class="preview">
+                    <label>Preview:</label>
+                    <img src="web/i/examples/gilt-04.jpg" alt=""><br>
+                    <p><input type="submit" value="Apply effects!"></p>
+                </div>
+            </div>
+            <ul>
+                <li class="nav left"><a href="#">&larr;</a></li>
+                <li>
+                    <label>polaroid</label>
+                    <div>
+                        <a href="#"><img src="web/i/examples/gilt-04.jpg" alt=""></a>
+                    </div>
+                </li>
+                <li>
+                    <label>polaroid</label>
+                    <div>
+                        <a href="#"><img src="web/i/examples/gilt-04.jpg" alt=""></a>
+                    </div>
+                </li>
+                <li>
+                    <label>polaroid</label>
+                    <div>
+                        <a href="#"><img src="web/i/examples/gilt-04.jpg" alt=""></a>
+                    </div>
+                </li>
+                <li>
+                    <label>polaroid</label>
+                    <div>
+                        <a href="#"><img src="web/i/examples/gilt-04.jpg" alt=""></a>
+                    </div>
+                </li>
+                <li>
+                    <label>polaroid</label>
+                    <div>
+                        <a href="#"><img src="web/i/examples/gilt-04.jpg" alt=""></a>
+                    </div>
+                </li>
+                <li class="nav right"><a href="#">&rarr;</a></li>
+            </ul>
+
+        </div><!-- .capsule.зшт -->
+
+        <!-- static page content (end) -->
+
+        </div><!-- .inner -->
+    </div><!-- .static-aligner -->
+</div><!-- #content -->
+
+</body>
+</html>

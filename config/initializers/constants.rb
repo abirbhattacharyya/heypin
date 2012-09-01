@@ -1,0 +1,15 @@
+IMAGE_EFFECTS = {  
+  "flip" => 1,
+  "add_text" => 2,
+  "black_and_white" => 3,
+  "edges" => 4,
+  "polaroid" => 5,
+  "emboss" => 6,
+  "implode" => 7,
+  "negate" => 8,
+  "wave" => 9,
+  "vignette" => 10,
+  "oil_paint" => 11,
+  "spread" => 12,
+  "rotate_90_degree" => 13,
+}

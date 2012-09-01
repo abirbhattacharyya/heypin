@@ -1,0 +1,60 @@
+<%= javascript_include_tag "easypaginate" %>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery('ul#items').easyPaginate({
+      step:5
+    });
+    jQuery(".effect_apply").click(function(){
+        jQuery(".effect_apply").removeClass("selected");
+        jQuery(this).addClass("selected");	
+    });
+});
+</script>
+<% form_tag apply_effect_pin_item_path(@pin_item.id), :id => "submit_form" do%>
+  <%= hidden_field_tag(:image_effect, "") %>
+<% end %>
+<div class="static-aligner">
+    <!-- static page content (begin) -->
+
+      <div class="capsule effects">
+
+          <div class="visual">
+              <div class="original">
+                  <label>Original:</label>
+                  <%= image_tag(url_for_file_column(@pin_item,:image_url)) %>
+              </div>
+              <div class="preview">
+                  <label>Preview:</label>
+                  <%= image_tag(url_for_file_column(@pin_item,:image_url), :id => "previw_image") %><br />
+                  <p>
+                    <%= button_to_function("Apply effects!", "check_form('submit_form');") %>
+                  </p>
+              </div>
+          </div>
+          <ul id="items">
+              <%#*<li class="nav left"><a href="#">&larr;</a></li>%>
+              <% image_effects.each do |effect, v|%>
+                <% image_url = File.join(@basic_path,"#{effect}_#{@pin_item.id}" + @extension) %>
+                <li id="<%=v%>" class= "effect_apply" onClick="jQuery('#previw_image').attr('src', '<%=image_url%>'); $('image_effect').value='<%=effect%>'">
+                  <label><%= effect.titleize %></label>
+                  <div>
+                      <%= link_to(image_tag(image_url), "javascript:;") %>
+                  </div>
+                </li>
+              <% end %>
+              <%#*<li class="nav right"><a href="#">&rarr;</a></li>%>
+          </ul>
+
+      </div><!-- .capsule.зшт -->
+
+    <!-- static page content (end) -->
+</div><!-- .static-aligner -->
+<script type="text/javascript">
+  function check_form(id)
+  {
+    if($('image_effect').value == "")
+      showNotification("Please select effect style.", 'error');
+    else
+      var f = document.forms[id];f.submit();return false;
+  }
+</script>

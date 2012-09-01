@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/RailsDev/heypin/config/routes.rb</file>
+        <file>file:/C:/RailsDev/heypin/app/controllers/home_controller.rb</file>
+        <file>file:/C:/RailsDev/heypin/app/controllers/users_controller.rb</file>
+        <file>file:/C:/RailsDev/heypin/app/views/layouts/application.html.erb</file>
+        <file>file:/C:/RailsDev/heypin/app/views/home/index.html.erb</file>
+        <file>file:/C:/RailsDev/heypin/app/controllers/pin_items_controller.rb</file>
+        <file>file:/C:/RailsDev/heypin/config/initializers/omniauth.rb</file>
+        <file>file:/C:/RailsDev/heypin/app/views/pin_items/effects.html.erb</file>
+        <file>file:/C:/RailsDev/heypin/app/models/user.rb</file>
+        <file>file:/C:/RailsDev/heypin/public/javascripts/easypaginate.js</file>
+        <file>file:/C:/RailsDev/heypin/app/views/home/winners.html.erb</file>
+    </open-files>
+</project-private>

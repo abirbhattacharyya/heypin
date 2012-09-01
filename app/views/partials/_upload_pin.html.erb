@@ -1,0 +1,70 @@
+<div class="static-aligner">
+  <!-- static page content (begin) -->
+
+  <div class="capsule upload-image ta-center">
+      <% form_remote_tag :url => upload_pin_path, :html => {:method => :post, :multipart => true, :id => 'uploadForm'} do %>
+
+        <h1 class="ta-center">Select an image to upload</h1>
+
+        <p><%= file_field :pin_item,:image_url, :size => "60" %></p>
+      <%end%>
+      <div id="upload_spinner_span" style ='display:none'>
+        <%=image_tag "ajax-loader.gif",:class => "spinner"%>
+      </div>
+        
+      <div id="upload_image_form" style="display:none">
+        <% form_tag add_pin_item_path,:id => "add_pin_item_form" do%>
+          <p><img src="" id="temp_image" height="150px" width="150px"/></p>
+          <%=hidden_field_tag :image_url%>
+          <%=hidden_field :pin_image, :pin_type, :value => PinItem::TYPES[:upload_pin] %>
+          <p>
+              <label>Add description?</label>
+              <br>
+              <%= text_field :pin_image, :description, :size => "70" %>
+          </p>
+          <p><%=submit_tag "Add Tag",:onClick  => "return formValidation('add_pin_item_form','pin_image_description')" %></p>
+        <%end%>
+      </div>
+  </div><!-- .capsule.зшт -->
+
+  <!-- static page content (end) -->
+</div><!-- .static-aligner -->
+<script type="text/javascript">
+  jQuery('#uploadForm input').change(function(){  
+ jQuery(this).closest("form").ajaxSubmit({
+  target: "#image_lists",
+  beforeSubmit: function(a,f,o) {
+    o.dataType = 'json';
+    jQuery("#upload_spinner_span").show();
+    jQuery("#upload_image_form").hide();
+  },
+  complete: function(XMLHttpRequest, textStatus) {
+
+    var path = XMLHttpRequest.responseText;
+    if (path != null){
+      jQuery("#image_url").val(path);
+      jQuery("#temp_image").attr("src",path);
+      jQuery("#upload_image_form").show();
+      jQuery("#upload_spinner_span").hide();
+    }
+    else{
+      alert("Failed");
+    }
+  }
+
+
+ });
+});
+
+function formValidation(form_id, description_id){
+  var description = jQuery("#"+form_id + " input[id="+ description_id +"]").val()
+ 
+  if (description == undefined || description == ""){
+    showNotification("Hey, description can't be blank.", 'error');
+    jQuery("#"+form_id + " input[id="+ description_id +"]").focus();
+    return false
+  }
+ 
+}
+
+</script>

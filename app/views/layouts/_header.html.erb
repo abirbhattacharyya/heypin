@@ -1,0 +1,36 @@
+<%= link_to("Scroll<br>to&nbsp;Top", "javascript:void(0)", :class => "scroller") %>
+
+<% content_tag(:div, :id => "header") do %>
+    <% content_tag(:ul, :class => "menu") do %>
+      <%#= content_tag(:li, link_to("Home", root_path)) if request.path != root_path %>
+      <%= content_tag(:li, link_to("Home", root_path, :class => "home "+([root_path].include?(request.path) ? "current" : ""))) %>
+      <%= content_tag(:li, link_to("Create", addpin_path, :class => ([addpin_path].include?(request.path) ? "current" : nil))) if logged_in? %>
+      <%= content_tag(:li, link_to("Winners", winners_path, :class => ([winners_path].include?(request.path) ? "current" : nil))) %>
+      <% if logged_in? %>
+        <%#= content_tag(:li, link_to((current_user.provider.nil?).to_s, "")) %>
+        <%= content_tag(:li, link_to("Logout", logout_path, :class => "login")) %>
+      <% else %>
+        <%= content_tag(:li, link_to("Login", login_path, :class => "login "+([login_path].include?(request.path) ? "current" : ""))) %>
+      <% end %>
+    <% end %>
+
+    <%= link_to("LOGO", root_path,:class => "logo") %>
+
+    <% form_tag(search_path, :class => "search") do %>
+      <%= text_field_tag :search, @search %>
+      <%= submit_tag "&nbsp;" %>
+    <% end %>
+<% end %>
+    <script type="text/javascript">
+          // alert(document.cookie);
+        if(self == top){
+        }
+        else {
+          <% if session[:signed_request] %>
+              jQuery('.login').hide();
+          <% else %>
+              window.location.href="<%=raw(callback_url) %>";
+          <% end %>
+          
+        }
+    </script>

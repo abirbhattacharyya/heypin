@@ -1,0 +1,70 @@
+ <% unless @images.empty? %>
+    <p><%= image_tag(@images.first,:width => "200",:id => "img_prev_url") %></p>
+    <p class="nav">
+        <a class="prev" id="prev2" href="javascript:;">&larr; Prev</a>
+        <a class="next" id="next2" href="javascript:;">Next &rarr;</a>
+    </p>
+    <%form_tag add_pin_item_path,:id => "new_pin_form" do%>
+        <%=hidden_field_tag :image_url, @images.first%>
+        <p>
+            <label>Description:</label>
+            <br>
+            <%=text_field :pin_image,:description, :size => "70"%>
+        </p>
+        <p>
+            <%=submit_tag "Add Tag",:onClick  => "return formValidation('new_pin_form','pin_image_description','pin_image_tag_list')" %>
+        </p>
+    <%end%>
+<%else%>
+    <p>No images are found </p>
+<%end%>
+<script type="text/javascript">
+  var all_images ;
+  var cur = 0;
+  all_images = '<%=@images.join(",")%>';
+  if(all_images == "" || all_images == undefined){
+    all_images = [];
+  }
+  else{
+    all_images = all_images.split(",");
+  }  
+  var img_src ;  
+  jQuery("#next2").click(function(){
+    jQuery("#img_prev_url").attr("src","/images/ajax-loader.gif");
+    cur =  cur + 1;
+    if (cur >= all_images.length){ cur =  0}
+    img_src = all_images[cur];
+    jQuery("#img_prev_url").attr("src",img_src);
+    jQuery("#new_pin_form input[id=image_url]").val(img_src);
+  })
+  jQuery("#prev2").click(function(){
+    jQuery("#img_prev_url").attr("src","/images/ajax-loader.gif");
+    cur =  cur - 1;
+    if (cur < 0){ cur =  all_images.length - 1}
+    img_src = all_images[cur];
+    jQuery("#img_prev_url").attr("src",img_src);
+    jQuery("#new_pin_form input[id=image_url]").val(img_src);
+   
+  })
+
+  /*
+  jQuery('#s2').cycle({
+    fx:     'fade',
+    speed:  'fast',
+    timeout: 0,
+    before:  onBefore,
+    after:  onAfter,
+    next:   '#next2',
+    prev:   '#prev2'
+});
+
+function onBefore() {
+  jQuery(this).height("");
+  jQuery(this).width("");  
+  jQuery("#new_pin_form input[id=image_url]").val(this.src);
+}
+function onAfter() {
+  jQuery(this).height("");
+  jQuery(this).width("");
+}*/
+</script>
